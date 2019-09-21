@@ -33,7 +33,7 @@ class LastPage extends StatelessWidget {
                                     borderRadius: new BorderRadius.circular(30.0)),
                             color: Theme.of(context).primaryColor,
                             child: Text("Submit"),
-                            onPressed: MainBloc.of(context).submitAnswers,
+                            onPressed: () => submitAction(context),
                         )
                     ],
                 ),
@@ -43,4 +43,16 @@ class LastPage extends StatelessWidget {
 		ArrowBackButton()
 		]);
     }
+
+	void submitAction(BuildContext context){
+		if(!MainBloc.of(context).trySubmitAnswers()){
+			Scaffold.of(context).showSnackBar(SnackBar(
+				content: Text("Please answer all the questions."),
+			));
+		} else {
+			Scaffold.of(context).showSnackBar(SnackBar(
+				content: Text("Submitted successfully."),
+			));
+		}
+	}
 }

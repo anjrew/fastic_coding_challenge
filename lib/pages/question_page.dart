@@ -19,44 +19,38 @@ class QuestionPage extends StatelessWidget {
                 context: context,
                 removeTop: true,
                 child: ListView(
-					padding: null,
-					shrinkWrap: true,
+                    padding: null,
+                    shrinkWrap: true,
                     children: <Widget>[
-
                         Image.asset(
                             headerImg,
                             fit: BoxFit.cover,
                             width: double.infinity,
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                              data.text,
-                              style: Theme.of(context).textTheme.display1,
-							softWrap: true,
-                              textAlign: TextAlign.center,
-                          ),
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                                data.text,
+                                style: Theme.of(context).textTheme.display1,
+                                softWrap: true,
+                                textAlign: TextAlign.center,
+                            ),
                         ),
-
                         Column(
-							mainAxisAlignment: MainAxisAlignment.center,
-							crossAxisAlignment: CrossAxisAlignment.center,
-							children: data.answers.map((Answer answer) => AnswerTile(
-												key: Key(answer.hashCode.toString()),
-												index: 2,
-												answer: answer,
-											))
-									.toList()),
-
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: data.answers
+                                        .map((Answer answer) => AnswerTile(
+                                                    key: Key(answer.hashCode.toString()),
+                                                    index: 2,
+                                                    answer: answer,
+                                                ))
+                                        .toList()),
                         WeiterButton()
-
                     ],
                 ),
             ),
-
             ArrowBackButton()
-
         ]);
     }
 }
@@ -71,35 +65,36 @@ class AnswerTile extends StatelessWidget {
         @required this.index,
     }) : super(key: key);
 
-	@override
+    @override
     Widget build(BuildContext context) {
-        return InkWell(
-			onTap: () => MainBloc.of(context).setAnswer(answer),
-			child:Container(
-				padding: EdgeInsets.all(15),
-				margin: EdgeInsets.all(10),
-				decoration: BoxDecoration(
-						borderRadius: BorderRadius.all(Radius.circular(25)),
-						color: Color.fromRGBO(251, 248, 241, 1.0),),
+        return Container(
+            padding: EdgeInsets.all(15),
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(25)),
+                color: Color.fromRGBO(251, 248, 210, 1.0),
+            ),
+            child: InkWell(
+                    onTap: () => MainBloc.of(context).setAnswer(answer),
                     child: Row(
-						children: <Widget>[
-							
-							Container(
-								decoration: BoxDecoration(
-									borderRadius: BorderRadius.all(Radius.circular(25)),
-									border: Border.all(color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
-									child: AnimatedOpacity(
-										child: Icon(Icons.done),
-										opacity: answer.isSelected ? 1.0 : 0.0,
-										duration: Duration(milliseconds: 300),
-									),),
-
-							Padding(
-								padding: EdgeInsets.symmetric(horizontal: 10),
-								child:Text(answer.text),),
-							
-						],
-					)
-                ),);         
+                        children: <Widget>[
+                            Container(
+                                decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(Radius.circular(25)),
+                                        border: Border.all(
+                                                color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
+                                child: AnimatedOpacity(
+                                    child: Icon(Icons.done),
+                                    opacity: answer.isSelected ? 1.0 : 0.0,
+                                    duration: Duration(milliseconds: 300),
+                                ),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(answer.text),
+                            ),
+                        ],
+                    )),
+        );
     }
 }

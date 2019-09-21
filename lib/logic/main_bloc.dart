@@ -5,10 +5,13 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nutrition_questionnaire/classes/answer.dart';
 import 'package:nutrition_questionnaire/classes/question_data.dart';
+import 'package:nutrition_questionnaire/utlis/globals.dart';
 import 'package:nutrition_questionnaire/utlis/images.dart';
 import 'package:nutrition_questionnaire/utlis/tools.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 
 class MainBloc extends Model {
     FirebaseAnalytics analytics = FirebaseAnalytics();
@@ -36,6 +39,7 @@ class MainBloc extends Model {
     void startQuestions() {
         pageController.animateToPage(1,
                 duration: pageAnimationDuration, curve: pageAnimationCurve);
+		analytics.logEvent(name: KIndicatorEvents.started);
     }
 
     void nextQuestion() {
@@ -48,17 +52,22 @@ class MainBloc extends Model {
                 duration: pageAnimationDuration, curve: pageAnimationCurve);
     }
 
-    void finishQuestions() {
-        pageController.previousPage(
-                duration: pageAnimationDuration, curve: pageAnimationCurve);
-    }
-
     void setAnswer(Answer selectedAnswer) {
 		QuestionData data = _questionData[selectedAnswer.question.number];
+
+		analytics.logEvent(
+			name: KIndicatorEvents.answer, 
+			parameters: { 
+				"question": selectedAnswer.id
+			});
         
 		data.answers.forEach((Answer answer) {
 			if (answer.number == selectedAnswer.number) {
-				answer.isSelected = true;
+				if (answer.isSelected){
+					answer.isSelected = false;
+				} else {
+					answer.isSelected = true;
+				}
 			} else {
 				answer.isSelected = false;
 			}
@@ -66,8 +75,41 @@ class MainBloc extends Model {
 		_streamController.add(_questionData);
     }
 
-	void submitAnswers(){
-		pageController.animateToPage(0, duration: pageAnimationDuration, curve: pageAnimationCurve);
+	void resetAnswers(){
+		_questionData.forEach((QuestionData question){
+			question.answers.forEach((Answer answer){
+				answer.isSelected = false;
+			});
+		});
+	}
+
+	bool trySubmitAnswers(){
+		if(allQuestionsAnswered()){
+			pageController.animateToPage(0, duration: pageAnimationDuration, curve: pageAnimationCurve);
+			analytics.logEvent(name: KIndicatorEvents.completed);
+			resetAnswers();
+			return true;
+		} else {
+			analytics.logEvent(name: KIndicatorEvents.completed);
+			return false;
+		}
+	}
+
+	bool allQuestionsAnswered(){
+		bool isValid = true;
+
+		for (QuestionData question in _questionData) {
+			bool hasAnswer = false;
+			for (Answer answer in question.answers) {
+				if (answer.isSelected){
+					hasAnswer = true;
+				}
+			}
+			if(!hasAnswer){
+				isValid = false;
+			}
+		}
+		return isValid;
 	}
 
     Future<void> getRemoteConfigData() async {

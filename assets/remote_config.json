@@ -43,7 +43,7 @@
             "3" : { "weekends": "Die richtige Ernährung für mich zu finden" }
         }
     },
-    "5":{
+    "4":{
         "question_id": "everyday_look_like",
         "question_text": "Was trifft am besten auf deinen Alltag zu?",
         "multiplechoice": false,
@@ -54,7 +54,7 @@
             "3" : { "travel" : "Ich bin viel auf Reisen" }
         }
     },
-    "6":{
+    "5":{
         "question_id": "focus_receipts",
         "question_text": "Auf was sollen wir bei deinen Rezepten den Fokus legen?",
         "multiplechoice": true,

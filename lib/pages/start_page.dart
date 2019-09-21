@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrition_questionnaire/logic/main_bloc.dart';
 
+
 class StartPage extends StatelessWidget {
 	
 	final bool showStartButton;
@@ -18,7 +19,7 @@ class StartPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
 
-                        Text("Welcome to the Nutrition questionnaire",
+                        Text("Welcome to the Nutrition Questionnaire",
 							style: Theme.of(context).textTheme.display2,
 							textAlign: TextAlign.center,),
 
@@ -33,7 +34,7 @@ class StartPage extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                         borderRadius: new BorderRadius.circular(30.0)),
                                 color: Theme.of(context).primaryColor,
-                            	child: Text("Start"),
+                            	child: Text("Start", style: TextStyle(fontSize: 20), ),
                             	onPressed: MainBloc.of(context).startQuestions,
                         	)
 						)
