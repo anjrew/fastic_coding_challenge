@@ -70,7 +70,7 @@ class AnswerTile extends StatelessWidget {
                         BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(25))),
                 child: AnimatedOpacity(
                     child: Icon(Icons.done),
-                    opacity: answer.isSelected ? 1.0 : 0.0,
+                    opacity: answer.isSelected ? 1.0 : 1.0,
                     duration: Duration(milliseconds: 300),
                 ),
             ),

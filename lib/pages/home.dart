@@ -26,21 +26,10 @@ class Home extends StatelessWidget {
 								headerImg: "assets/graphics/headers/question_1_header/question_1_header.png",
 								data: data,
 							)
-						).toList()
+						).toList(),
 
-						// QuestionPage(
-						// 	headerImg: 'assets/graphics/headers/question_1_header/question_1_header.png',
-						// 	data: QuestionData(
-						// 		multiplechoice: true,
-						// 		id: "cha",
-						// 		// headerImg: Images.getImage(image: ,sceenSize: ),
-						// 		number: 2,
-						// 		text: "Do you like cheese?",
-						// 		questionAnswers: [ 
-						// 			Answer("Yes", isSelected: false, number: 1, text: "Cock") 
-						// 			]
-						// 		),
-						// )
+						LastPage()
+
 					],
 				),
 			) : Container();
