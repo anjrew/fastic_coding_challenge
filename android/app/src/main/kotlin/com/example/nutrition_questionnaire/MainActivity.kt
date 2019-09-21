@@ -1,4 +1,4 @@
-package com.example.nutrition_questionnaire
+package com.earyzhe.nutrition_questionnaire
 
 import android.os.Bundle
 

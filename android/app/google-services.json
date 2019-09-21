@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1056147254095",
+    "firebase_url": "https://fastic-b0385.firebaseio.com",
+    "project_id": "fastic-b0385",
+    "storage_bucket": "fastic-b0385.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056147254095:android:7378095c25c10905e4733a",
+        "android_client_info": {
+          "package_name": "com.earyzhe.nutrition_questionnaire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056147254095-msqmortn9gmgvrpsg5kfvaqs2dcaqrfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1DKB5nHheln4kJU6PtPO0F_uQhIblE-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056147254095-msqmortn9gmgvrpsg5kfvaqs2dcaqrfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
