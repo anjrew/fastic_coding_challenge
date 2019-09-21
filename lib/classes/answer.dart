@@ -1,7 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:nutrition_questionnaire/classes/question_data.dart';
 
-class Answer{
-	final String text;
-	bool isSelected;
-	Answer(this.text, {@required this.isSelected});
+class Answer {
+  final String id;
+  final String text;
+  int number;
+  bool isSelected;
+  QuestionData question;
+  Answer(this.id ,{@required this.text, @required number, this.isSelected, this.question});
 }

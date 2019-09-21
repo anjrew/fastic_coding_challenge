@@ -1,21 +1,24 @@
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:nutrition_questionnaire/pages/home.dart';
 import 'package:scoped_model/scoped_model.dart';
-
-import 'home.dart';
+import 'package:flutter/services.dart';
 import 'logic/main_bloc.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-    static FirebaseAnalytics analytics = FirebaseAnalytics();
-    static FirebaseAnalyticsObserver observer =
-            FirebaseAnalyticsObserver(analytics: analytics);
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+
     final MainBloc _mainBloc = MainBloc();
 
-    @override
+   @override
     Widget build(BuildContext context) {
+		SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
         return ScopedModel(
             model: _mainBloc,
             child: MaterialApp(
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
                     primarySwatch: Colors.blue,
                 ),
                 home: Home(),
-                navigatorObservers: [FirebaseAnalyticsObserver(analytics: analytics)],
+                navigatorObservers: [FirebaseAnalyticsObserver(analytics: _mainBloc.analytics)],
 				debugShowCheckedModeBanner: false,
             ),
         );

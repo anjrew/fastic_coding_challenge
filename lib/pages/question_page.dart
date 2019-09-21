@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:nutrition_questionnaire/classes/answer.dart';
-import 'package:nutrition_questionnaire/classes/question_page_data.dart';
+import 'package:nutrition_questionnaire/classes/question_data.dart';
 import 'package:nutrition_questionnaire/logic/main_bloc.dart';
 
 class QuestionPage extends StatelessWidget {
-    final QuestionsPageData data;
+    final QuestionData data;
+	final String headerImg;
 
-    QuestionPage({@required this.data});
+    QuestionPage({@required this.data, @required this.headerImg}): super(key: Key(data.id));
 
     @override
     Widget build(BuildContext context) {
         return Stack(children: [
 			
-			Positioned(
-				left: 20,
-				top: 20,
-				child: IconButton(icon: Icon(Icons.arrow_back_ios),
-				onPressed: MainBloc.of(context).previousQuestion,),
-			),
-
             ListView(
                 padding: null,
                 children: <Widget>[
                     Image.asset(
-                        data.headerImg,
+                        headerImg,
                         fit: BoxFit.cover,
                         width: double.infinity,
                     ),
                     Text(
-                        data.question,
+                        data.text,
                         style: Theme.of(context).textTheme.display2,
                         textAlign: TextAlign.center,
                     ),
@@ -39,14 +33,25 @@ class QuestionPage extends StatelessWidget {
                                     .map((Answer answer) => AnswerTile(
                                             key: Key(answer.hashCode.toString()),
                                             index: 2,
-                                            answer: answer))
+                                            answer: answer,
+											))
                                     .toList()),
+
                     MaterialButton(
                         child: Text("Weiter"),
                         onPressed: MainBloc.of(context).nextQuestion,
                     )
                 ],
-            )
+            ),
+
+			Positioned(
+				left: 10,
+				width: 50,
+				top: 50,
+				height: 50,
+				child: IconButton(icon: Icon(Icons.arrow_back_ios),
+				onPressed: MainBloc.of(context).previousQuestion,),
+			),
         ]);
     }
 }
@@ -55,9 +60,7 @@ class AnswerTile extends StatelessWidget {
     final Answer answer;
     final int index;
 
-    const AnswerTile(
-            {@required Key key, @required this.answer, @required this.index})
-            : super(key: key);
+    const AnswerTile({@required Key key, @required this.answer, @required this.index,}) : super(key: key);
 
     @override
     Widget build(BuildContext context) {
@@ -72,7 +75,7 @@ class AnswerTile extends StatelessWidget {
                 ),
             ),
             title: Text(answer.text),
-            onTap: () {},
+            onTap: () => MainBloc.of(context).setAnswer(answer)
         );
     }
 }
