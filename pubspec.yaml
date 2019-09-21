@@ -54,3 +54,4 @@ flutter:
     - assets/graphics/headers/question_6_header/question_6_header@3x.png
     - assets/graphics/headers/
     - assets/graphics/launcher_icon.png
+    - assets/remote_config.json

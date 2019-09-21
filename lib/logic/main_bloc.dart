@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
@@ -10,7 +11,8 @@ import 'package:nutrition_questionnaire/utlis/images.dart';
 import 'package:nutrition_questionnaire/utlis/tools.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
 
 
 class MainBloc extends Model {
@@ -113,7 +115,9 @@ class MainBloc extends Model {
 	}
 
     Future<void> getRemoteConfigData() async {
+		String defaultConf = await rootBundle.loadString("assets/remote_config.json");
         remoteConfig = await RemoteConfig.instance;
+		remoteConfig.setDefaults(jsonDecode(defaultConf) as Map<String, dynamic>);
         remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
         await remoteConfig.fetch(expiration: const Duration(seconds: 1));
         await remoteConfig.activateFetched();
