@@ -1,46 +1,46 @@
 {
-    "1":{
+    "0":{
         "question_id": "goals",
         "question_text": "Welche persönlichen Ziele möchtest du verfolgen?",
         "multiplechoice": true,
         "answers": {
-            "1" : { "loose_weight": "Ich möchte abnehmen" },
-            "2" : { "more_energy": "Mehr Energie im Alltag haben" },
-            "3" : { "be_sportier": "Ich möchte sportlicher werden" },
-            "4" : { "optimize_health": "Meine Gesundheit optimieren" }
+            "0" : { "loose_weight": "Ich möchte abnehmen" },
+            "1" : { "more_energy": "Mehr Energie im Alltag haben" },
+            "2" : { "be_sportier": "Ich möchte sportlicher werden" },
+            "3" : { "optimize_health": "Meine Gesundheit optimieren" }
         }
     },
-    "2":{
+    "1":{
         "question_id": "support_goals",
         "question_text": "Womit soll dich dein persönlicher Ernährungscoach beim erreichen deiner Ziele unterstützen?",
         "multiplechoice": true,
         "answers": {
-            "1" : { "motivation": "Motivation" } ,
-            "2" : { "guidance": "Orientierungshilfe" } ,
-            "3" : { "right_foods" : "Die richtigen Nahrungsmittel" } ,
-            "4" : { "nutrition_tips": "Ernährungstipps" }
+            "0" : { "motivation": "Motivation" } ,
+            "1" : { "guidance": "Orientierungshilfe" } ,
+            "2" : { "right_foods" : "Die richtigen Nahrungsmittel" } ,
+            "3" : { "nutrition_tips": "Ernährungstipps" }
         }
     },
-    "3":{
+    "2":{
         "question_id": "biggest_challenges",
         "question_text": "Was waren bis jetzt deine größten Herausforderungen?",
         "multiplechoice": true,
         "answers": {
-            "1" : { "find_right_diet" : "Die richtige Ernährung für mich zu finden" },
-            "2" : { "fast_food" : "Ich esse viel Fast Food und Junk Food" },
-            "3" : { "weekends" : "Die Kontrolle am Wochenende fällt mir schwer " },
-            "4" : { "eat_to_much" : "Ich esse generell viel" }
+            "0" : { "find_right_diet" : "Die richtige Ernährung für mich zu finden" },
+            "1" : { "fast_food" : "Ich esse viel Fast Food und Junk Food" },
+            "2" : { "weekends" : "Die Kontrolle am Wochenende fällt mir schwer " },
+            "3" : { "eat_to_much" : "Ich esse generell viel" }
         }
     },
-    "4":{
+    "3":{
         "question_id": "eating_habits",
         "question_text": "Wie sehen deine Essgewohnheiten aus?",
         "multiplechoice": true,
         "answers": {   
-            "1" : { "fast_food": "Ich esse generell viel" },
-            "2" : { "find_right_diet": "Ich esse viel Fast Food und Junk Food" },
-            "3" : { "eat_to_much": "Die Kontrolle am Wochenende fällt mir schwer " },
-            "4" : { "weekends": "Die richtige Ernährung für mich zu finden" }
+            "0" : { "fast_food": "Ich esse generell viel" },
+            "1" : { "find_right_diet": "Ich esse viel Fast Food und Junk Food" },
+            "2" : { "eat_to_much": "Die Kontrolle am Wochenende fällt mir schwer " },
+            "3" : { "weekends": "Die richtige Ernährung für mich zu finden" }
         }
     },
     "5":{
@@ -48,10 +48,10 @@
         "question_text": "Was trifft am besten auf deinen Alltag zu?",
         "multiplechoice": false,
         "answers": {
-            "1" : { "shift_work" : "Ich arbeite in Schichten" },
-            "2" : { "home" : "Ich bin oft zuhause" },
-            "3" : { "normal_working_hours" : "Ich arbeite zu normalen zeiten " },
-            "4" : { "travel" : "Ich bin viel auf Reisen" }
+            "0" : { "shift_work" : "Ich arbeite in Schichten" },
+            "1" : { "home" : "Ich bin oft zuhause" },
+            "2" : { "normal_working_hours" : "Ich arbeite zu normalen zeiten " },
+            "3" : { "travel" : "Ich bin viel auf Reisen" }
         }
     },
     "6":{
@@ -59,10 +59,10 @@
         "question_text": "Auf was sollen wir bei deinen Rezepten den Fokus legen?",
         "multiplechoice": true,
         "answers": {
-            "1" : { "vegan" : "Vegan" },
-            "2" : { "vegetarian " : "Vegetarisch" },
-            "3" : { "low_carb " : "Low Carb"},
-            "4" : { "balanced" : "Ausgewogen"}
+            "0" : { "vegan" : "Vegan" },
+            "1" : { "vegetarian " : "Vegetarisch" },
+            "2" : { "low_carb " : "Low Carb"},
+            "3" : { "balanced" : "Ausgewogen"}
         }
     }
 }

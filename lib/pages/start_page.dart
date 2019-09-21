@@ -18,13 +18,21 @@ class StartPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
 
-                        Text("Welcome to the Nutrition questionnaire"),
+                        Text("Welcome to the Nutrition questionnaire",
+							style: Theme.of(context).textTheme.display2,
+							textAlign: TextAlign.center,),
+
+						Image.asset("assets/graphics/launcher_icon.png"),
 
                         AnimatedOpacity(
 							opacity: showStartButton ? 1.0 : 0.0,
 							duration: Duration(milliseconds: 300),
 							curve: Curves.easeInOut,
-							child: MaterialButton(
+							child: FlatButton(
+								padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                                shape: RoundedRectangleBorder(
+                                        borderRadius: new BorderRadius.circular(30.0)),
+                                color: Theme.of(context).primaryColor,
                             	child: Text("Start"),
                             	onPressed: MainBloc.of(context).startQuestions,
                         	)

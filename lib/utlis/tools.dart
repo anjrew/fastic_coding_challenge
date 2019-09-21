@@ -33,13 +33,16 @@ List<Answer> parseDataToAnswer(Map<String, dynamic> data){
 
 	data.keys.forEach((String number) {
 		(data[number] as Map<String, dynamic>).forEach((String id, dynamic text){
-			 answers.add(Answer(id,
-			 	text: text.toString(),
-				number: number,
-				isSelected: false
-			 ));
+			answers.add(
+				Answer(id,
+					number: int.parse(number),
+			 		text: text.toString(),
+					isSelected: false
+				)
+			);
 		});
 	}); 
 
 	return answers;
 }
+

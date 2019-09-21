@@ -34,4 +34,23 @@ flutter:
   assets:
     - assets/
     - assets/graphics/headers/question_1_header/question_1_header.png
+    - assets/graphics/headers/question_1_header/question_1_header.png
+    - assets/graphics/headers/question_1_header/question_1_header@2x.png
+    - assets/graphics/headers/question_1_header/question_1_header@3x.png
+    - assets/graphics/headers/question_2_header/question_2_header.png
+    - assets/graphics/headers/question_2_header/question_2_header@2x.png
+    - assets/graphics/headers/question_2_header/question_2_header@3x.png
+    - assets/graphics/headers/question_3_header/question_3_header.png
+    - assets/graphics/headers/question_3_header/question_3_header@2x.png
+    - assets/graphics/headers/question_3_header/question_3_header@3x.png
+    - assets/graphics/headers/question_4_header/question_4_header.png
+    - assets/graphics/headers/question_4_header/question_4_header@2x.png
+    - assets/graphics/headers/question_4_header/question_4_header@3x.png
+    - assets/graphics/headers/question_5_header/question_5_header.png
+    - assets/graphics/headers/question_5_header/question_5_header@2x.png
+    - assets/graphics/headers/question_5_header/question_5_header@3x.png
+    - assets/graphics/headers/question_6_header/question_6_header.png
+    - assets/graphics/headers/question_6_header/question_6_header@2x.png
+    - assets/graphics/headers/question_6_header/question_6_header@3x.png
     - assets/graphics/headers/
+    - assets/graphics/launcher_icon.png
