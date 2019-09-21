@@ -13,6 +13,9 @@ PODS:
     - Firebase/Analytics (~> 6.0)
     - Firebase/Core
     - Flutter
+  - firebase_core (0.0.1):
+    - Firebase/Core
+    - Flutter
   - firebase_remote_config (0.0.1):
     - Firebase/RemoteConfig
     - Flutter
@@ -88,6 +91,7 @@ PODS:
 
 DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
+  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
 
@@ -111,6 +115,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
+  firebase_core:
+    :path: ".symlinks/plugins/firebase_core/ios"
   firebase_remote_config:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
   Flutter:
@@ -119,6 +125,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Firebase: a2b5951f30ff38fd3b3bdae9c7d340f940fd3c51
   firebase_analytics: 045e7ebe7b8a4d27357168072868ff082dca15a6
+  firebase_core: ae55ea92448ec8675d325da4db22cf3b4d58a54d
   firebase_remote_config: dadb2f94875e4f2e173b570a77b88f4df3b14631
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 48414ae5cbf6976d8a2f7177e0466540e5ab33ce
