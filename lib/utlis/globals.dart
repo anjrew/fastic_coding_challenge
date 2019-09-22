@@ -7,4 +7,5 @@ class KIndicatorEvents{
 	static const started = "STARTED";
 	static const completed = "COMPLETED";
 	static const answer = "ANSWER";
+	static const appOpened = "APP_OPENED";
 }

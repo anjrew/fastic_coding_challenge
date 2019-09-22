@@ -19,7 +19,7 @@ List<QuestionData> parseStringyToQuestion(String stingifiedData){
 		}
 
 		return QuestionData(	
-			id: number,
+			id: data[number][QuestionData.questionIdKey],
 			multiplechoice: multiplechoice,
 			text: data[number][QuestionData.questionTextKey],
 			questionAnswers: parseDataToAnswer(data[number][QuestionData.answersKey]),

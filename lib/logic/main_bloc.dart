@@ -36,15 +36,17 @@ class MainBloc extends Model {
         pageController = new PageController();
         observer = FirebaseAnalyticsObserver(analytics: analytics);
         getRemoteConfigData();
+		analytics.logAppOpen();
     }
 
     void startQuestions() {
         pageController.animateToPage(1,
                 duration: pageAnimationDuration, curve: pageAnimationCurve);
-		analytics.logEvent(name: KIndicatorEvents.started);
+		analytics.logTutorialBegin();
     }
 
     void nextQuestion() {
+		analytics.logLevelUp(level: _questionData[pageController.page.toInt()].number);
         pageController.nextPage(
                 duration: pageAnimationDuration, curve: pageAnimationCurve);
     }
@@ -60,7 +62,8 @@ class MainBloc extends Model {
 		analytics.logEvent(
 			name: KIndicatorEvents.answer, 
 			parameters: { 
-				"question": selectedAnswer.id
+				"question": selectedAnswer.question.id,
+				"answer": selectedAnswer.id
 			});
         
 		data.answers.forEach((Answer answer) {
@@ -88,11 +91,10 @@ class MainBloc extends Model {
 	bool trySubmitAnswers(){
 		if(allQuestionsAnswered()){
 			pageController.animateToPage(0, duration: pageAnimationDuration, curve: pageAnimationCurve);
-			analytics.logEvent(name: KIndicatorEvents.completed);
+			analytics.logTutorialComplete();
 			resetAnswers();
 			return true;
 		} else {
-			analytics.logEvent(name: KIndicatorEvents.completed);
 			return false;
 		}
 	}
@@ -116,9 +118,9 @@ class MainBloc extends Model {
 
     Future<void> getRemoteConfigData() async {
 		String defaultConf = await rootBundle.loadString("assets/remote_config.json");
-        remoteConfig = await RemoteConfig.instance;
-		remoteConfig.setDefaults(jsonDecode(defaultConf) as Map<String, dynamic>);
-        remoteConfig.setConfigSettings(RemoteConfigSettings(debugMode: true));
+        remoteConfig = await RemoteConfig.instance
+			..setDefaults(jsonDecode(defaultConf) as Map<String, dynamic>)
+        	..setConfigSettings(RemoteConfigSettings(debugMode: true));
         await remoteConfig.fetch(expiration: const Duration(seconds: 1));
         await remoteConfig.activateFetched();
 

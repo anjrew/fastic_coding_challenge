@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
 
                                         ...snapshot.data
                                                 .map((QuestionData data) => QuestionPage(
-                                                            headerImg: bloc.getHeaderImage(data.id),
+                                                            headerImg: bloc.getHeaderImage(data.number.toString()),
                                                             data: data,
                                                         ))
                                                 .toList(),
