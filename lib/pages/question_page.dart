@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrition_questionnaire/classes/answer.dart';
 import 'package:nutrition_questionnaire/classes/question_data.dart';
@@ -28,12 +29,12 @@ class QuestionPage extends StatelessWidget {
                             width: double.infinity,
                         ),
                         Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.symmetric(horizontal:25.0, vertical: 10),
                             child: Text(
                                 data.text,
-                                style: Theme.of(context).textTheme.display1,
+                                style: Theme.of(context).textTheme.title,
                                 softWrap: true,
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.left,
                             ),
                         ),
                         Column(
@@ -46,6 +47,15 @@ class QuestionPage extends StatelessWidget {
                                                     answer: answer,
                                                 ))
                                         .toList()),
+
+						Center(child:DotsIndicator(
+							dotsCount: MainBloc.of(context).amountOfQuestions,
+							position: data.number,
+							decorator: DotsDecorator(
+								color: Theme.of(context).primaryColor.withOpacity(0.5),
+								activeColor: Theme.of(context).primaryColor,
+							),),),
+
                         WeiterButton()
                     ],
                 ),
@@ -76,25 +86,26 @@ class AnswerTile extends StatelessWidget {
             ),
             child: InkWell(
                     onTap: () => MainBloc.of(context).setAnswer(answer),
-                    child: Row(
-                        children: <Widget>[
-                            Container(
-                                decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(25)),
-                                        border: Border.all(
-                                                color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
-                                child: AnimatedOpacity(
-                                    child: Icon(Icons.done),
-                                    opacity: answer.isSelected ? 1.0 : 0.0,
-                                    duration: Duration(milliseconds: 300),
-                                ),
-                            ),
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                child: Text(answer.text),
-                            ),
-                        ],
-                    )),
+                    child:  Row(
+                          children: <Widget>[
+                              AnimatedContainer(
+								duration: Duration(milliseconds: 300),
+                                  decoration: BoxDecoration(
+										color: answer.isSelected ? Theme.of(context).primaryColor : Color.fromRGBO(0, 0, 0, 0),
+                                          borderRadius: BorderRadius.all(Radius.circular(25)),
+                                          border: Border.all(
+                                                  color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
+                                  child: Icon(Icons.done, color: Colors.white,),
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  child: ConstrainedBox(
+										constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+										child:Text(answer.text, maxLines: 10,),)
+                              ),
+                          ],
+                      ),
+                    ),
         );
     }
 }

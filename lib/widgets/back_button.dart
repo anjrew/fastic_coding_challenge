@@ -7,7 +7,7 @@ class ArrowBackButton extends StatelessWidget {
 	return Positioned(
                 left: 10,
                 width: 50,
-                top: 20,
+                top: 25,
                 height: 50,
                 child: IconButton(
                     icon: Icon(Icons.arrow_back_ios),

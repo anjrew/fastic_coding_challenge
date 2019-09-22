@@ -15,6 +15,7 @@ dependencies:
   firebase_analytics: ^5.0.2
   
   flutter_launcher_icons: ^0.7.3
+  dots_indicator: ^1.0.0
   scoped_model: ^1.0.1
 
   cupertino_icons: ^0.1.2

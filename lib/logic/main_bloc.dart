@@ -28,6 +28,15 @@ class MainBloc extends Model {
     PageController pageController;
 
     List<QuestionData> _questionData;
+	int get amountOfQuestions => _questionData.length;
+	int get currentQuestion {
+		int currentPage = pageController.page.toInt();
+		if (currentPage == 0) {
+			return 0;
+		} else {
+			return pageController.page.toInt() - 1;
+		}
+	} 
 
 	StreamController<List<QuestionData>> _streamController = new StreamController<List<QuestionData>>();
 	Stream<List<QuestionData>> questionsStream() => _streamController.stream;
@@ -46,7 +55,7 @@ class MainBloc extends Model {
     }
 
     void nextQuestion() {
-		analytics.logLevelUp(level: _questionData[pageController.page.toInt()].number);
+		analytics.logLevelUp(level: _questionData[currentQuestion].number);
         pageController.nextPage(
                 duration: pageAnimationDuration, curve: pageAnimationCurve);
     }
