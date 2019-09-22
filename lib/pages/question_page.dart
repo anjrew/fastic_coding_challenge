@@ -87,22 +87,26 @@ class AnswerTile extends StatelessWidget {
             child: InkWell(
                     onTap: () => MainBloc.of(context).setAnswer(answer),
                     child:  Row(
-                          children: <Widget>[
-                              AnimatedContainer(
-								duration: Duration(milliseconds: 300),
-                                  decoration: BoxDecoration(
-										color: answer.isSelected ? Theme.of(context).primaryColor : Color.fromRGBO(0, 0, 0, 0),
-                                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                                          border: Border.all(
-                                                  color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
-                                  child: Icon(Icons.done, color: Colors.white,),
-                              ),
-                              Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: ConstrainedBox(
-										constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
-										child:Text(answer.text, maxLines: 10,),)
-                              ),
+						children: <Widget>[
+							AnimatedContainer(
+							duration: Duration(milliseconds: 300),
+								decoration: BoxDecoration(
+									color: answer.isSelected ? Theme.of(context).primaryColor : Color.fromRGBO(0, 0, 0, 0),
+										borderRadius: BorderRadius.all(Radius.circular(25)),
+										border: Border.all(
+												color: Color.fromRGBO(234, 231, 224, 1.0), width: 2)),
+								child: AnimatedOpacity(
+									opacity: answer.isSelected ? 1.0 : 0.0,
+									duration: Duration(milliseconds: 300),
+									curve: Curves.easeInOut,
+									child: Icon(Icons.done, color: Colors.white,)),
+							),
+							Padding(
+								padding: EdgeInsets.symmetric(horizontal: 10),
+								child: ConstrainedBox(
+									constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+									child:Text(answer.text, maxLines: 10,),)
+							),
                           ],
                       ),
                     ),
